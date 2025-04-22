@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>研学 - 辽宁省非物质文化遗产</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f5e9;
+            font-family: "STKaiti", "KaiTi", "FangSong", serif;
+            color: #3b3a36;
+            background-image: url('https://img.freepik.com/free-photo/white-chinese-style-texture_53876-90504.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .ancient-border {
+            border: 1px dashed #5a784d;
+            border-radius: 8px;
+            background-color: rgba(244, 245, 233, 0.8);
+        }
+        .ancient-button {
+            background-color: #5a784d;
+            color: #f4f5e9;
+            transition: all 0.3s;
+            border: none;
+        }
+        .ancient-button:hover {
+            background-color: #3e5135;
+            transform: translateY(-2px);
+        }
+        .nav-item.active {
+            border-bottom: 3px solid #5a784d;
+            font-weight: bold;
+        }
+        .category-item {
+            transition: all 0.3s;
+        }
+        .category-item.active {
+            background-color: #5a784d;
+            color: #f4f5e9;
+        }
+        .category-item:hover:not(.active) {
+            background-color: rgba(90, 120, 77, 0.1);
+        }
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .section-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            background-color: #5a784d;
+        }
+        .ink-decoration {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://img.freepik.com/free-vector/chinese-art-style-plant-background_52683-87399.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .top-nav {
+            background-color: rgba(244, 245, 233, 0.9);
+            border-bottom: 1px dashed #5a784d;
+        }
+        .sub-nav {
+            background-color: rgba(244, 245, 233, 0.9);
+            border-bottom: 1px dashed #5a784d;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="bg-gray-800 text-white px-4 py-1 flex justify-between items-center text-xs">
+        <span>10:30</span>
+        <div>
+            <i class="fas fa-signal mr-1"></i>
+            <i class="fas fa-wifi mr-1"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="top-nav shadow-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-green-900">研学</h1>
+            <div class="flex space-x-4">
+                <a href="#" class="text-green-900"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-green-900"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 分类导航 -->
+    <div class="sub-nav py-3 px-4 overflow-x-auto">
+        <div class="flex space-x-4 whitespace-nowrap">
+            <a href="#" class="category-item active px-3 py-1 rounded-full text-sm">全部</a>
+            <a href="#" class="category-item px-3 py-1 rounded-full text-sm border border-dashed border-green-700">手工技艺</a>
+            <a href="#" class="category-item px-3 py-1 rounded-full text-sm border border-dashed border-green-700">传统音乐</a>
+            <a href="#" class="category-item px-3 py-1 rounded-full text-sm border border-dashed border-green-700">民俗活动</a>
+            <a href="#" class="category-item px-3 py-1 rounded-full text-sm border border-dashed border-green-700">传统戏剧</a>
+            <a href="#" class="category-item px-3 py-1 rounded-full text-sm border border-dashed border-green-700">传统舞蹈</a>
+        </div>
+    </div>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-6 mb-16">
+        <!-- 研学课程 -->
+        <section class="mb-8 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">精选课程</h2>
+                <a href="#" class="text-sm text-green-900">全部课程 <i class="fas fa-angle-right"></i></a>
+            </div>
+            
+            <!-- 精品课程轮播 -->
+            <div class="ancient-border p-4 mb-6">
+                <div class="relative h-44 bg-green-50 rounded-lg overflow-hidden">
+                    <img src="https://img.freepik.com/free-vector/hand-drawn-chinese-paper-cutting-creative-background_23-2147885371.jpg" alt="精品课程" class="w-full h-full object-cover">
+                    <div class="absolute bottom-0 left-0 right-0 bg-black bg-opacity-40 p-3 text-white">
+                        <h3 class="font-bold">【名师课程】辽宁传统剪纸艺术全解</h3>
+                        <div class="flex justify-between items-center mt-1">
+                            <span class="text-sm">张大师亲授</span>
+                            <span class="text-sm text-yellow-300 font-bold">¥99.9</span>
+                        </div>
+                    </div>
+                    <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded border border-dashed border-white">热门</div>
+                </div>
+            </div>
+            
+            <!-- 课程列表 -->
+            <div class="grid grid-cols-2 gap-4">
+                <div class="ancient-border overflow-hidden">
+                    <div class="relative">
+                        <img src="https://img.freepik.com/free-photo/traditional-clay-figurines-display-market-stall_1088-812.jpg" alt="课程" class="w-full h-36 object-cover">
+                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded border border-dashed border-white">初级</div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">辽宁泥塑基础技法</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-play-circle text-green-700 mr-1"></i>
+                                <span class="text-xs text-gray-600">12课时</span>
+                            </div>
+                            <span class="text-xs text-red-700 font-bold">¥49.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border overflow-hidden">
+                    <div class="relative">
+                        <img src="https://img.freepik.com/free-photo/folk-artists-perform-traditional-chinese-opera_1208-2433.jpg" alt="课程" class="w-full h-36 object-cover">
+                        <div class="absolute top-2 right-2 bg-yellow-600 text-white text-xs px-2 py-1 rounded border border-dashed border-white">中级</div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">二人转艺术赏析</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-play-circle text-green-700 mr-1"></i>
+                                <span class="text-xs text-gray-600">8课时</span>
+                            </div>
+                            <span class="text-xs text-red-700 font-bold">¥39.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border overflow-hidden">
+                    <div class="relative">
+                        <img src="https://img.freepik.com/free-photo/female-hand-embroidering-piece-fabric-with-colorful-thread_23-2149318214.jpg" alt="课程" class="w-full h-36 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded border border-dashed border-white">高级</div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">辽北满绣技法详解</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-play-circle text-green-700 mr-1"></i>
+                                <span class="text-xs text-gray-600">15课时</span>
+                            </div>
+                            <span class="text-xs text-red-700 font-bold">¥69.9</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border overflow-hidden">
+                    <div class="relative">
+                        <img src="https://img.freepik.com/free-photo/colorful-umbrella-decorated-with-dancing-characters_156375-2737.jpg" alt="课程" class="w-full h-36 object-cover">
+                        <div class="absolute top-2 right-2 bg-green-600 text-white text-xs px-2 py-1 rounded border border-dashed border-white">初级</div>
+                    </div>
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">东北秧歌入门教学</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="flex items-center">
+                                <i class="fas fa-play-circle text-green-700 mr-1"></i>
+                                <span class="text-xs text-gray-600">10课时</span>
+                            </div>
+                            <span class="text-xs text-red-700 font-bold">免费</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 非遗知识 -->
+        <section class="mb-8 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">非遗知识</h2>
+                <a href="#" class="text-sm text-green-900">更多知识 <i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="ancient-border p-4">
+                    <div class="flex">
+                        <img src="https://img.freepik.com/free-vector/hand-drawn-chinese-temple_23-2147547565.jpg" alt="非遗知识" class="w-24 h-24 object-cover rounded-lg mr-4">
+                        <div>
+                            <h3 class="font-bold text-green-900">辽宁省非物质文化遗产概述</h3>
+                            <p class="text-sm text-gray-600 mt-1 line-clamp-2">辽宁省非物质文化遗产历史悠久，种类丰富，包含传统音乐、舞蹈、戏剧、技艺等多种形式...</p>
+                            <div class="flex items-center mt-2">
+                                <span class="text-xs text-gray-500 mr-3"><i class="far fa-eye mr-1"></i>2356</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i>189</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border p-4">
+                    <div class="flex">
+                        <img src="https://img.freepik.com/free-photo/entertaining-chinese-dancing-costumes-performing_1150-15630.jpg" alt="非遗知识" class="w-24 h-24 object-cover rounded-lg mr-4">
+                        <div>
+                            <h3 class="font-bold text-green-900">二人转的历史渊源与艺术特点</h3>
+                            <p class="text-sm text-gray-600 mt-1 line-clamp-2">二人转是流行于中国东北地区的传统民间艺术形式，历史可追溯至清朝中叶...</p>
+                            <div class="flex items-center mt-2">
+                                <span class="text-xs text-gray-500 mr-3"><i class="far fa-eye mr-1"></i>1782</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i>142</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border p-4">
+                    <div class="flex">
+                        <img src="https://img.freepik.com/free-vector/red-chinese-paper-cut-style-background-with-floral-design_1017-38234.jpg" alt="非遗知识" class="w-24 h-24 object-cover rounded-lg mr-4">
+                        <div>
+                            <h3 class="font-bold text-green-900">满族剪纸的象征意义与图案解读</h3>
+                            <p class="text-sm text-gray-600 mt-1 line-clamp-2">满族剪纸是中国民间艺术的重要组成部分，其图案多取材于满族生活和信仰...</p>
+                            <div class="flex items-center mt-2">
+                                <span class="text-xs text-gray-500 mr-3"><i class="far fa-eye mr-1"></i>1453</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-thumbs-up mr-1"></i>98</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 线下研学活动 -->
+        <section class="mb-8 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">线下研学活动</h2>
+                <a href="#" class="text-sm text-green-900">全部活动 <i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="grid grid-cols-1 gap-4">
+                <div class="ancient-border p-4">
+                    <div class="flex justify-between mb-2">
+                        <h3 class="font-bold text-green-900">走进辽阳雕漆艺术工作室</h3>
+                        <span class="text-xs bg-red-50 text-red-800 px-2 py-1 rounded border border-dashed border-red-300">报名中</span>
+                    </div>
+                    <p class="text-sm text-gray-600">活动时间：2023-11-20 09:00-17:00</p>
+                    <p class="text-sm text-gray-600">活动地点：辽阳市白塔区非遗文化产业园</p>
+                    <p class="text-sm text-gray-600 mt-2">活动内容：参观传统雕漆工艺制作过程，与非遗传承人交流，体验简单雕漆工艺制作。</p>
+                    <div class="flex mt-3">
+                        <button class="ancient-button px-4 py-2 rounded text-sm flex-1 mr-2">立即报名</button>
+                        <button class="px-4 py-2 rounded text-sm border border-dashed border-green-700 flex items-center justify-center text-green-800">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="ancient-border p-4">
+                    <div class="flex justify-between mb-2">
+                        <h3 class="font-bold text-green-900">北镇满族民俗文化体验日</h3>
+                        <span class="text-xs bg-green-50 text-green-800 px-2 py-1 rounded border border-dashed border-green-300">即将开始</span>
+                    </div>
+                    <p class="text-sm text-gray-600">活动时间：2023-12-05 10:00-16:00</p>
+                    <p class="text-sm text-gray-600">活动地点：锦州市北镇满族民俗博物馆</p>
+                    <p class="text-sm text-gray-600 mt-2">活动内容：体验满族传统服饰穿戴，学习满族礼仪，品尝满族传统美食，参与满族传统游戏。</p>
+                    <div class="flex mt-3">
+                        <button class="ancient-button px-4 py-2 rounded text-sm flex-1 mr-2">预约名额</button>
+                        <button class="px-4 py-2 rounded text-sm border border-dashed border-green-700 flex items-center justify-center text-green-800">
+                            <i class="far fa-heart"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-dashed border-green-700 px-4 py-2">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">主页</span>
+            </a>
+            <a href="research.html" class="flex flex-col items-center text-green-800">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">研学</span>
+            </a>
+            <a href="custom.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-paint-brush text-lg"></i>
+                <span class="text-xs mt-1">定制</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html> 

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>主页 - 辽宁省非物质文化遗产</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f5e9;
+            font-family: "STKaiti", "KaiTi", "FangSong", serif;
+            color: #3b3a36;
+            background-image: url('https://img.freepik.com/free-photo/white-chinese-style-texture_53876-90504.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .ancient-border {
+            border-radius: 8px;
+            background-color: rgba(244, 245, 233, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .ancient-button {
+            background-color: #5a784d;
+            color: #f4f5e9;
+            transition: all 0.3s;
+            border: none;
+        }
+        .ancient-button:hover {
+            background-color: #3e5135;
+            transform: translateY(-2px);
+        }
+        .nav-item.active {
+            border-bottom: 3px solid #5a784d;
+            font-weight: bold;
+        }
+        .banner-bg {
+            background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-chinese-landscape-background_52683-69028.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+        }
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            background-color: #5a784d;
+        }
+        .ink-decoration {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://img.freepik.com/free-vector/chinese-art-style-plant-background_52683-87399.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .top-nav {
+            background-color: rgba(244, 245, 233, 0.9);
+            border-bottom: 1px solid #5a784d;
+        }
+        .chinese-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 5rem;
+            height: 5rem;
+            background-color: rgba(244, 245, 233, 0.9);
+            border: 1px solid #5a784d;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+        .chinese-icon:hover {
+            transform: scale(1.05);
+            background-color: rgba(90, 120, 77, 0.1);
+        }
+        .tab-button {
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+        }
+        .tab-button.active {
+            border-bottom: 2px solid #5a784d;
+            color: #5a784d;
+            font-weight: bold;
+        }
+        .craftsman-card {
+            transition: all 0.3s;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .craftsman-card:hover {
+            transform: translateY(-5px);
+        }
+        .activity-card {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s;
+            margin-bottom: 1.5rem;
+        }
+        .activity-card:hover {
+            transform: translateY(-5px);
+        }
+        .activity-tag {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: rgba(90, 120, 77, 0.9);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            border-bottom-left-radius: 8px;
+        }
+        .news-date {
+            font-size: 0.75rem;
+            color: #5a784d;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            display: inline-block;
+            font-size: 1.75rem;
+            line-height: 1.5;
+            color: #5a784d;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-right: 1.5rem;
+        }
+        .vertical-subtitle {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.9rem;
+            color: #7a8c6e;
+            margin-right: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        .category-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 1px solid #5a784d;
+            transition: all 0.3s ease;
+        }
+        .category-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .category-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .category-label {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-weight: bold;
+            color: #5a784d;
+        }
+        .tea-section {
+            display: flex;
+            align-items: flex-start;
+            margin: 3rem 0;
+            position: relative;
+        }
+        .section-content {
+            flex: 1;
+        }
+        .bottom-nav-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .bottom-nav-button::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #5a784d;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .bottom-nav-button:hover::after, 
+        .bottom-nav-button.active::after {
+            width: 70%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="bg-gray-800 text-white px-4 py-1 flex justify-between items-center text-xs">
+        <span>10:30</span>
+        <div>
+            <i class="fas fa-signal mr-1"></i>
+            <i class="fas fa-wifi mr-1"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="top-nav shadow-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-green-900">辽宁非遗</h1>
+            <div class="flex space-x-4">
+                <a href="#" class="text-green-900"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-green-900"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-6 pb-24">
+        <!-- Banner菜单 -->
+        <div class="mb-10">
+            <div class="flex mb-3">
+                <button class="tab-button active flex-1 py-2 px-4 text-center text-green-900">非遗项目</button>
+                <button class="tab-button flex-1 py-2 px-4 text-center text-gray-600">匠人推荐</button>
+            </div>
+            
+            <!-- Banner内容 - 非遗项目 -->
+            <div class="banner-bg rounded-lg overflow-hidden relative flex items-center">
+                <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+                <div class="container mx-auto px-8 flex items-center justify-start relative z-10">
+                    <div class="flex items-start">
+                        <div class="vertical-text text-white">
+                            非遗心意
+                        </div>
+                        <div class="vertical-subtitle text-white">
+                            传承千年技艺的文化魅力
+                        </div>
+                    </div>
+                    <div class="ml-8 mt-16">
+                        <h2 class="text-2xl font-bold text-white">探寻辽宁非遗之美</h2>
+                        <p class="mt-2 text-white text-opacity-90">传承千年文化，守护精神家园</p>
+                        <div class="flex mt-4">
+                            <button class="bg-green-800 bg-opacity-70 text-white px-4 py-1 rounded-full text-sm mr-3">
+                                了解更多
+                            </button>
+                            <button class="bg-white bg-opacity-30 text-white px-4 py-1 rounded-full text-sm">
+                                非遗名录
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ink-decoration"></div>
+            </div>
+        </div>
+
+        <!-- 四大板块导航 -->
+        <div class="grid grid-cols-4 gap-8 mb-12 px-8">
+            <a href="home.html" class="flex flex-col items-center">
+                <div class="chinese-icon">
+                    <i class="fas fa-home text-green-800 text-2xl"></i>
+                </div>
+                <span class="block text-green-900 text-center">主页</span>
+            </a>
+            <a href="research.html" class="flex flex-col items-center">
+                <div class="chinese-icon">
+                    <i class="fas fa-book-open text-green-800 text-2xl"></i>
+                </div>
+                <span class="block text-green-900 text-center">研学</span>
+            </a>
+            <a href="custom.html" class="flex flex-col items-center">
+                <div class="chinese-icon">
+                    <i class="fas fa-paint-brush text-green-800 text-2xl"></i>
+                </div>
+                <span class="block text-green-900 text-center">定制</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center">
+                <div class="chinese-icon">
+                    <i class="fas fa-user text-green-800 text-2xl"></i>
+                </div>
+                <span class="block text-green-900 text-center">我的</span>
+            </a>
+        </div>
+
+        <!-- 六大非遗类别 -->
+        <div class="tea-section mb-16">
+            <div class="flex items-start">
+                <div class="vertical-text">
+                    六大非遗类别
+                </div>
+                <div class="vertical-subtitle">
+                    辽宁特色非遗文化分类体系
+                </div>
+            </div>
+            
+            <div class="section-content px-8">
+                <div class="grid grid-cols-3 gap-8 mt-4">
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/oriental-brush-calligraphy-ink-painting_53876-129872.jpg" alt="传统技艺">
+                        </div>
+                        <div class="category-label">传统技艺</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/chinese-opera-mask-white-background_53876-32033.jpg" alt="传统表演">
+                        </div>
+                        <div class="category-label">传统表演</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/appetizing-dumpling-wooden-plate_144627-14177.jpg" alt="传统美食">
+                        </div>
+                        <div class="category-label">传统美食</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/chinese-new-year-concept-with-copyspace_23-2148032737.jpg" alt="民俗活动">
+                        </div>
+                        <div class="category-label">民俗活动</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/herbal-balls-massage_1150-17665.jpg" alt="传统医药">
+                        </div>
+                        <div class="category-label">传统医药</div>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="category-circle">
+                            <img src="https://img.freepik.com/free-photo/traditional-chinese-musical-instrument-guzheng_1308-102742.jpg" alt="传统音乐">
+                        </div>
+                        <div class="category-label">传统音乐</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 匠人集 -->
+        <section class="mb-16 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        匠人集
+                    </div>
+                    <div class="vertical-subtitle">
+                        守护传统技艺的人间瑰宝
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="flex justify-end mb-4">
+                        <a href="#" class="text-sm text-green-900">查看更多 <i class="fas fa-angle-right"></i></a>
+                    </div>
+                    
+                    <!-- 分类导航 -->
+                    <div class="flex mb-6 overflow-x-auto whitespace-nowrap">
+                        <button class="mr-3 px-3 py-1 text-sm rounded-full bg-green-700 text-white">全部</button>
+                        <button class="mr-3 px-3 py-1 text-sm rounded-full border border-green-700 text-green-900">精进者</button>
+                        <button class="mr-3 px-3 py-1 text-sm rounded-full border border-green-700 text-green-900">名匠</button>
+                        <button class="mr-3 px-3 py-1 text-sm rounded-full border border-green-700 text-green-900">李凤鸣</button>
+                        <button class="mr-3 px-3 py-1 text-sm rounded-full border border-green-700 text-green-900">香洋军</button>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="ancient-border p-4 flex craftsman-card">
+                            <img src="https://img.freepik.com/free-vector/ancient-oriental-people-composition-with-landscape-pagoda-trees-human-character-old-chinese-master_1284-60426.jpg" alt="精进者" class="w-20 h-20 object-cover rounded-full mr-4">
+                            <div>
+                                <h3 class="font-bold text-green-900">李凤鸣</h3>
+                                <p class="text-sm text-green-800">满族剪纸非遗传承人</p>
+                                <p class="text-xs mt-1">满族剪纸第七代传承人，国家级非遗传承人</p>
+                            </div>
+                        </div>
+                        <div class="ancient-border p-4 flex craftsman-card">
+                            <img src="https://img.freepik.com/free-vector/chinese-style-brush-stroke-man-playing-guqin_537404-239.jpg" alt="名匠" class="w-20 h-20 object-cover rounded-full mr-4">
+                            <div>
+                                <h3 class="font-bold text-green-900">香洋军</h3>
+                                <p class="text-sm text-green-800">辽宁皮影戏传承人</p>
+                                <p class="text-xs mt-1">从艺35年，致力于皮影戏的创新与传承</p>
+                            </div>
+                        </div>
+                        <div class="ancient-border p-4 flex craftsman-card">
+                            <img src="https://img.freepik.com/free-photo/japanese-man-teaching-traditional-pottery-his-workshop_23-2149063240.jpg" alt="名匠" class="w-20 h-20 object-cover rounded-full mr-4">
+                            <div>
+                                <h3 class="font-bold text-green-900">精进者-王师傅</h3>
+                                <p class="text-sm text-green-800">辽宁陶瓷艺术传承人</p>
+                                <p class="text-xs mt-1">专注传统陶瓷制作工艺，著名制陶艺人</p>
+                            </div>
+                        </div>
+                        <div class="ancient-border p-4 flex craftsman-card">
+                            <img src="https://img.freepik.com/free-photo/elder-asian-woman-working-with-textile-home_23-2149063230.jpg" alt="名匠" class="w-20 h-20 object-cover rounded-full mr-4">
+                            <div>
+                                <h3 class="font-bold text-green-900">张大师</h3>
+                                <p class="text-sm text-green-800">辽宁刺绣非遗传承人</p>
+                                <p class="text-xs mt-1">国家级刺绣大师，擅长满绣和盘绣技艺</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ink-decoration"></div>
+            </div>
+        </section>
+
+        <!-- 新闻资讯 -->
+        <section class="mb-16 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        新闻资讯
+                    </div>
+                    <div class="vertical-subtitle">
+                        非遗领域最新动态与活动报道
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="flex justify-end mb-4">
+                        <a href="#" class="text-sm text-green-900">查看更多 <i class="fas fa-angle-right"></i></a>
+                    </div>
+                    
+                    <div class="ancient-border divide-y divide-gray-200">
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <h3 class="font-bold text-green-900">全国非遗保护工作会议在沈阳召开</h3>
+                                <span class="news-date">今天</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">沈阳大剧院，探讨非遗保护新模式和发展战略，多位传承人受邀分享经验...</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>沈阳大剧院</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-eye mr-1"></i>1856</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <h3 class="font-bold text-green-900">辽宁非遗数字化保护工程正式启动</h3>
+                                <span class="news-date">昨天</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">大连数字文化产业园，首批50项非遗技艺将通过VR、AR等技术进行数字化记录...</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>大连数字文化产业园</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-eye mr-1"></i>1245</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <h3 class="font-bold text-green-900">2023辽宁传统手工艺创新设计大赛成果展</h3>
+                                <span class="news-date">2天前</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">锦州文化中心，青年设计师与非遗传承人合作的创新作品引发关注...</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>锦州文化中心</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-eye mr-1"></i>986</span>
+                            </div>
+                        </div>
+                        <div class="p-4">
+                            <div class="flex justify-between items-center mb-1">
+                                <h3 class="font-bold text-green-900">满族传统剪纸艺术展在巴黎卢浮宫展出</h3>
+                                <span class="news-date">5天前</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-2">法国巴黎，辽宁满族剪纸艺术首次登上国际舞台，传承人李凤鸣现场展示剪纸技艺...</p>
+                            <div class="flex justify-between items-center">
+                                <span class="text-xs text-gray-500"><i class="fas fa-map-marker-alt mr-1"></i>法国巴黎</span>
+                                <span class="text-xs text-gray-500"><i class="far fa-eye mr-1"></i>3542</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ink-decoration"></div>
+            </div>
+        </section>
+
+        <!-- 非遗活动 -->
+        <section class="mb-16 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        精彩活动
+                    </div>
+                    <div class="vertical-subtitle">
+                        线上线下共同传承非遗文化魅力
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="flex justify-end mb-4">
+                        <a href="activities.html" class="text-sm text-green-900">查看更多 <i class="fas fa-angle-right"></i></a>
+                    </div>
+                    
+                    <!-- 活动展示 - 圆形图片布局 -->
+                    <div class="grid grid-cols-4 gap-8 mb-8">
+                        <div class="flex flex-col items-center">
+                            <div class="category-circle">
+                                <img src="https://img.freepik.com/free-vector/virtual-reality-isometric-composition_1284-24694.jpg" alt="云端非遗博览会">
+                            </div>
+                            <div class="category-label">云端非遗博览会</div>
+                            <span class="text-xs text-red-600 mt-1">常年开放</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="category-circle">
+                                <img src="https://img.freepik.com/free-photo/video-play-digital-media-entertainment-streaming-concept_53876-121238.jpg" alt="短视频挑战赛">
+                            </div>
+                            <div class="category-label">短视频挑战赛</div>
+                            <span class="text-xs text-red-600 mt-1">火热进行中</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="category-circle">
+                                <img src="https://img.freepik.com/free-photo/traditional-chinese-old-town-scenery_1417-12022.jpg" alt="城市巡游">
+                            </div>
+                            <div class="category-label">城市巡游</div>
+                            <span class="text-xs text-red-600 mt-1">周末固定场次</span>
+                        </div>
+                        <div class="flex flex-col items-center">
+                            <div class="category-circle">
+                                <img src="https://img.freepik.com/free-photo/craft-workshop-traditional-culture-china_1417-11025.jpg" alt="文化节庆">
+                            </div>
+                            <div class="category-label">文化节庆</div>
+                            <span class="text-xs text-red-600 mt-1">12月15日</span>
+                        </div>
+                    </div>
+                    
+                    <!-- 云端非遗博览会 -->
+                    <div class="ancient-border mb-8">
+                        <div class="flex items-center mb-3">
+                            <div class="w-12 h-12 rounded-full bg-green-50 flex items-center justify-center mr-3 border border-green-700">
+                                <i class="fas fa-vr-cardboard text-green-800 text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-green-900">云端非遗博览会</h3>
+                                <p class="text-xs text-gray-600">虚拟展馆 · 沉浸体验 · 互动参与</p>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-600 mb-3">搭建3D虚拟展馆，分设传统技艺展示区和非遗三大主题展厅，通过VR技术体验虚拟皮影戏后制作，参与姆岩"画"虚拟雕刻，嵌入互动游戏等丰富体验。</p>
+                        <a href="activities.html" class="ancient-button px-4 py-2 rounded text-sm block text-center">立即体验</a>
+                    </div>
+                </div>
+                <div class="ink-decoration"></div>
+            </div>
+        </section>
+
+        <!-- 非遗课程 -->
+        <section class="mb-16 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        非遗课程
+                    </div>
+                    <div class="vertical-subtitle">
+                        学习传统技艺，体验非遗魅力
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="flex justify-end mb-4">
+                        <a href="#" class="text-sm text-green-900">查看更多 <i class="fas fa-angle-right"></i></a>
+                    </div>
+                    
+                    <div class="grid grid-cols-1 gap-6">
+                        <div class="ancient-border p-4 flex">
+                            <img src="https://img.freepik.com/free-photo/woman-showing-handicrafts-making-process_23-2149557939.jpg" alt="城市非遗体验与交流课堂" class="w-24 h-24 object-cover rounded-full mr-4">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-green-900">城市非遗体验与交流课堂</h3>
+                                <p class="text-sm text-gray-600 mt-1">传统技艺实操课程，专业非遗传承人亲授，线下实体课堂</p>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-xs text-red-700 font-bold">¥399/6课时</span>
+                                    <button class="text-xs ancient-button px-3 py-1 rounded">立即报名</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ancient-border p-4 flex">
+                            <img src="https://img.freepik.com/free-photo/chef-making-chinese-traditional-food-cakes_1417-4718.jpg" alt="李氏镰入制作与面塑艺术" class="w-24 h-24 object-cover rounded-full mr-4">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-green-900">李氏镰入制作与面塑艺术</h3>
+                                <p class="text-sm text-gray-600 mt-1">李氏传统面塑技艺传承，让您亲手制作精美面塑作品</p>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-xs text-red-700 font-bold">¥299/4课时</span>
+                                    <button class="text-xs ancient-button px-3 py-1 rounded">立即报名</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ancient-border p-4 flex">
+                            <img src="https://img.freepik.com/free-photo/person-working-manually-with-wood_23-2148415175.jpg" alt="姆岩玉雕与满族刺绣" class="w-24 h-24 object-cover rounded-full mr-4">
+                            <div class="flex-1">
+                                <h3 class="font-bold text-green-900">姆岩玉雕与满族刺绣</h3>
+                                <p class="text-sm text-gray-600 mt-1">满族传统工艺双修班，玉雕与刺绣技艺同步学习</p>
+                                <div class="flex justify-between items-center mt-2">
+                                    <span class="text-xs text-red-700 font-bold">¥599/8课时</span>
+                                    <button class="text-xs ancient-button px-3 py-1 rounded">立即报名</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ink-decoration"></div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-green-700 px-4 py-2">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center text-green-800 bottom-nav-button active">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">主页</span>
+            </a>
+            <a href="research.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">研学</span>
+            </a>
+            <a href="custom.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-paint-brush text-lg"></i>
+                <span class="text-xs mt-1">定制</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        // 简单的选项卡功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabButtons = document.querySelectorAll('.tab-button');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 

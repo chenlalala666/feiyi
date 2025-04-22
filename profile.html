@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人中心 - 辽宁省非物质文化遗产</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f5e9;
+            font-family: "STKaiti", "KaiTi", "FangSong", serif;
+            color: #3b3a36;
+            background-image: url('https://img.freepik.com/free-photo/white-chinese-style-texture_53876-90504.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .ancient-border {
+            border: 1px dashed #5a784d;
+            border-radius: 8px;
+            background-color: rgba(244, 245, 233, 0.8);
+        }
+        .ancient-button {
+            background-color: #5a784d;
+            color: #f4f5e9;
+            transition: all 0.3s;
+            border: none;
+        }
+        .ancient-button:hover {
+            background-color: #3e5135;
+            transform: translateY(-2px);
+        }
+        .top-nav {
+            background-color: rgba(244, 245, 233, 0.9);
+            border-bottom: 1px dashed #5a784d;
+        }
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+        }
+        .section-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            background-color: #5a784d;
+        }
+        .ink-decoration {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://img.freepik.com/free-vector/chinese-art-style-plant-background_52683-87399.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .data-card {
+            transition: all 0.3s;
+        }
+        .data-card:hover {
+            transform: translateY(-5px);
+        }
+        .tool-icon {
+            font-size: 1.5rem;
+            color: #5a784d;
+            margin-bottom: 0.5rem;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #E0E2CF;
+            overflow: hidden;
+        }
+        .progress-value {
+            height: 100%;
+            background-color: #5a784d;
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="bg-gray-800 text-white px-4 py-1 flex justify-between items-center text-xs">
+        <span>10:30</span>
+        <div>
+            <i class="fas fa-signal mr-1"></i>
+            <i class="fas fa-wifi mr-1"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="top-nav shadow-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-green-900">个人中心</h1>
+            <div class="flex space-x-4">
+                <a href="#" class="text-green-900"><i class="fas fa-cog"></i></a>
+                <a href="#" class="text-green-900"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-6 mb-16">
+        <!-- 用户信息卡片 -->
+        <section class="mb-6 relative">
+            <div class="ancient-border p-4">
+                <div class="flex items-center">
+                    <img src="https://img.freepik.com/free-psd/3d-illustration-person-with-sunglasses_23-2149436188.jpg" alt="用户头像" class="w-16 h-16 rounded-full mr-4 border-2 border-dashed border-green-700">
+                    <div class="flex-1">
+                        <div class="flex justify-between items-center mb-1">
+                            <h2 class="font-bold text-lg text-green-900">陈文化</h2>
+                            <span class="text-xs px-2 py-1 bg-green-50 text-green-800 rounded-full border border-dashed border-green-300">非遗爱好者</span>
+                        </div>
+                        <p class="text-xs text-gray-600 mb-2">加入31天 | ID: 20230912</p>
+                        <div>
+                            <div class="flex justify-between text-xs mb-1">
+                                <span>会员成长值</span>
+                                <span class="text-green-800">235/500</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-value" style="width: 47%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 数据统计 -->
+        <section class="mb-6">
+            <div class="grid grid-cols-4 gap-3">
+                <div class="ancient-border p-3 text-center data-card">
+                    <div class="text-xl font-bold text-green-900">12</div>
+                    <div class="text-xs text-gray-600">已学课程</div>
+                </div>
+                <div class="ancient-border p-3 text-center data-card">
+                    <div class="text-xl font-bold text-green-900">36</div>
+                    <div class="text-xs text-gray-600">收藏内容</div>
+                </div>
+                <div class="ancient-border p-3 text-center data-card">
+                    <div class="text-xl font-bold text-green-900">3</div>
+                    <div class="text-xs text-gray-600">订单数量</div>
+                </div>
+                <div class="ancient-border p-3 text-center data-card">
+                    <div class="text-xl font-bold text-green-900">523</div>
+                    <div class="text-xs text-gray-600">积分</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 工具导航 -->
+        <section class="mb-6 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">我的工具</h2>
+            </div>
+            <div class="grid grid-cols-4 gap-4">
+                <a href="#" class="flex flex-col items-center">
+                    <div class="ancient-border w-14 h-14 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-wallet tool-icon"></i>
+                    </div>
+                    <span class="text-xs text-green-900">我的钱包</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="ancient-border w-14 h-14 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-ticket-alt tool-icon"></i>
+                    </div>
+                    <span class="text-xs text-green-900">优惠券</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="ancient-border w-14 h-14 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-address-card tool-icon"></i>
+                    </div>
+                    <span class="text-xs text-green-900">收货地址</span>
+                </a>
+                <a href="#" class="flex flex-col items-center">
+                    <div class="ancient-border w-14 h-14 rounded-full flex items-center justify-center mb-1">
+                        <i class="fas fa-headset tool-icon"></i>
+                    </div>
+                    <span class="text-xs text-green-900">客户服务</span>
+                </a>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 学习足迹 -->
+        <section class="mb-6 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">学习足迹</h2>
+                <a href="#" class="text-sm text-green-900">全部 <i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="ancient-border p-4 mb-3">
+                <div class="flex">
+                    <img src="https://img.freepik.com/free-photo/traditional-handmade-ceramic-vase-workshop_23-2149877314.jpg" alt="课程图片" class="w-24 h-16 object-cover rounded-lg mr-3">
+                    <div class="flex-1">
+                        <h3 class="font-bold mb-1 text-green-900">辽宁传统陶艺制作技法</h3>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-600">学习进度：78%</div>
+                            <button class="text-xs ancient-button px-3 py-1 rounded">继续学习</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ancient-border p-4">
+                <div class="flex">
+                    <img src="https://img.freepik.com/free-photo/people-showing-skills-making-chinese-new-year-decorations_23-2149224112.jpg" alt="课程图片" class="w-24 h-16 object-cover rounded-lg mr-3">
+                    <div class="flex-1">
+                        <h3 class="font-bold mb-1 text-green-900">满族传统剪纸艺术入门</h3>
+                        <div class="flex justify-between items-center">
+                            <div class="text-xs text-gray-600">学习进度：45%</div>
+                            <button class="text-xs ancient-button px-3 py-1 rounded">继续学习</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 我的订单 -->
+        <section class="mb-6 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">我的订单</h2>
+                <a href="#" class="text-sm text-green-900">全部订单 <i class="fas fa-angle-right"></i></a>
+            </div>
+            <div class="flex justify-between mb-4">
+                <a href="#" class="ancient-border p-3 flex flex-col items-center w-1/5">
+                    <i class="fas fa-credit-card text-xl text-green-800 mb-1"></i>
+                    <span class="text-xs text-green-900">待付款</span>
+                </a>
+                <a href="#" class="ancient-border p-3 flex flex-col items-center w-1/5">
+                    <i class="fas fa-box text-xl text-green-800 mb-1"></i>
+                    <span class="text-xs text-green-900">待发货</span>
+                </a>
+                <a href="#" class="ancient-border p-3 flex flex-col items-center w-1/5">
+                    <i class="fas fa-truck text-xl text-green-800 mb-1"></i>
+                    <span class="text-xs text-green-900">待收货</span>
+                </a>
+                <a href="#" class="ancient-border p-3 flex flex-col items-center w-1/5">
+                    <i class="fas fa-comment-alt text-xl text-green-800 mb-1"></i>
+                    <span class="text-xs text-green-900">待评价</span>
+                </a>
+            </div>
+            <div class="ancient-border p-4">
+                <div class="flex justify-between items-center mb-3">
+                    <div class="text-sm">订单号：202309150023</div>
+                    <div class="text-xs text-green-800">待收货</div>
+                </div>
+                <div class="flex mb-3">
+                    <img src="https://img.freepik.com/free-photo/product-package-made-traditional-chinese-craftsmanship-ai-generated_123838-2215.jpg" alt="商品图片" class="w-16 h-16 object-cover rounded-lg mr-3">
+                    <div class="flex-1">
+                        <h3 class="text-sm font-bold text-green-900">辽宁满族传统剪纸装饰画</h3>
+                        <p class="text-xs text-gray-600 mt-1">40cm×30cm 红色 手工剪纸 含框</p>
+                        <div class="flex justify-between items-center mt-1">
+                            <div class="text-xs">¥199.00</div>
+                            <div class="text-xs">×1</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-between border-t border-dashed border-green-200 pt-3">
+                    <div class="text-xs text-gray-600">2023-09-15 18:30</div>
+                    <div class="flex space-x-2">
+                        <button class="text-xs px-3 py-1 border border-dashed border-green-700 rounded text-green-900">查看物流</button>
+                        <button class="text-xs ancient-button px-3 py-1 rounded">确认收货</button>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+
+        <!-- 猜你喜欢 -->
+        <section class="mb-6 relative">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-lg font-bold section-title text-green-900">猜你喜欢</h2>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="ancient-border overflow-hidden">
+                    <img src="https://img.freepik.com/free-photo/chinese-lanterns-crafts_1088-5026.jpg" alt="推荐商品" class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">辽宁传统手工宫灯</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-green-800 font-bold">¥299.00</div>
+                            <button class="text-xs ancient-button px-2 py-1 rounded">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="ancient-border overflow-hidden">
+                    <img src="https://img.freepik.com/free-photo/gong-chinese-instrument_23-2148193424.jpg" alt="推荐课程" class="w-full h-32 object-cover">
+                    <div class="p-3">
+                        <h3 class="font-bold text-sm text-green-900">辽宁锣鼓艺术入门课程</h3>
+                        <div class="flex justify-between items-center mt-2">
+                            <div class="text-green-800 font-bold">¥79.00</div>
+                            <button class="text-xs ancient-button px-2 py-1 rounded">查看详情</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="ink-decoration"></div>
+        </section>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-dashed border-green-700 px-4 py-2">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">主页</span>
+            </a>
+            <a href="research.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">研学</span>
+            </a>
+            <a href="custom.html" class="flex flex-col items-center text-gray-500">
+                <i class="fas fa-paint-brush text-lg"></i>
+                <span class="text-xs mt-1">定制</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-green-800">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+</body>
+</html> 

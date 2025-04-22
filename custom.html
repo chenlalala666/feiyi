@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定制 - 辽宁省非物质文化遗产</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background-color: #f4f5e9;
+            font-family: "STKaiti", "KaiTi", "FangSong", serif;
+            color: #3b3a36;
+            background-image: url('https://img.freepik.com/free-photo/white-chinese-style-texture_53876-90504.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+        }
+        .ancient-border {
+            border-radius: 8px;
+            background-color: rgba(244, 245, 233, 0.8);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .ancient-button {
+            background-color: #5a784d;
+            color: #f4f5e9;
+            transition: all 0.3s;
+            border: none;
+        }
+        .ancient-button:hover {
+            background-color: #3e5135;
+            transform: translateY(-2px);
+        }
+        .banner-bg {
+            background-image: url('https://img.freepik.com/free-vector/hand-painted-watercolor-chinese-landscape-background_52683-69028.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+        }
+        .section-title {
+            position: relative;
+            padding-left: 1rem;
+            margin-bottom: 2rem;
+        }
+        .section-title:before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0.25rem;
+            bottom: 0.25rem;
+            width: 4px;
+            background-color: #5a784d;
+        }
+        .ink-decoration {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-image: url('https://img.freepik.com/free-vector/chinese-art-style-plant-background_52683-87399.jpg');
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+        .top-nav {
+            background-color: rgba(244, 245, 233, 0.9);
+            border-bottom: 1px solid #5a784d;
+        }
+        .bottom-nav-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        .bottom-nav-button::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #5a784d;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        .bottom-nav-button:hover::after, 
+        .bottom-nav-button.active::after {
+            width: 70%;
+        }
+        .tea-section {
+            display: flex;
+            align-items: flex-start;
+            margin: 3rem 0;
+            position: relative;
+        }
+        .section-content {
+            flex: 1;
+        }
+        .vertical-text {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            display: inline-block;
+            font-size: 1.75rem;
+            line-height: 1.5;
+            color: #5a784d;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            margin-right: 1.5rem;
+        }
+        .vertical-subtitle {
+            writing-mode: vertical-rl;
+            text-orientation: mixed;
+            font-size: 0.9rem;
+            color: #7a8c6e;
+            margin-right: 0.5rem;
+            letter-spacing: 0.1em;
+        }
+        .category-circle {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto;
+            border: 1px solid #5a784d;
+            transition: all 0.3s ease;
+        }
+        .category-circle:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .category-circle img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .category-label {
+            text-align: center;
+            margin-top: 0.75rem;
+            font-weight: bold;
+            color: #5a784d;
+        }
+        .custom-item {
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .custom-item:hover {
+            background-color: rgba(90, 120, 77, 0.1);
+        }
+        .custom-item.selected {
+            background-color: rgba(90, 120, 77, 0.15);
+            border-left: 3px solid #5a784d;
+        }
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 0.75rem;
+        }
+        .checklist-item input[type="checkbox"] {
+            width: 1rem;
+            height: 1rem;
+            border-radius: 50%;
+            border: 1px solid #5a784d;
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            outline: none;
+            margin-right: 0.5rem;
+            position: relative;
+            cursor: pointer;
+        }
+        .checklist-item input[type="checkbox"]:checked {
+            background-color: #5a784d;
+        }
+        .checklist-item input[type="checkbox"]:checked:after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 2px;
+            width: 4px;
+            height: 8px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+    </style>
+</head>
+<body>
+    <!-- 状态栏 -->
+    <div class="bg-gray-800 text-white px-4 py-1 flex justify-between items-center text-xs">
+        <span>10:30</span>
+        <div>
+            <i class="fas fa-signal mr-1"></i>
+            <i class="fas fa-wifi mr-1"></i>
+            <i class="fas fa-battery-three-quarters"></i>
+        </div>
+    </div>
+
+    <!-- 顶部导航 -->
+    <header class="top-nav shadow-sm p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-xl font-bold text-green-900">辽宁非遗·定制</h1>
+            <div class="flex space-x-4">
+                <a href="#" class="text-green-900"><i class="fas fa-search"></i></a>
+                <a href="#" class="text-green-900"><i class="fas fa-bell"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- 主要内容 -->
+    <main class="container mx-auto px-4 py-6 pb-24">
+        <!-- Banner -->
+        <div class="banner-bg rounded-lg overflow-hidden relative flex items-center mb-8">
+            <div class="absolute inset-0 bg-black bg-opacity-20"></div>
+            <div class="container mx-auto px-8 flex items-center justify-start relative z-10">
+                <div class="flex items-start">
+                    <div class="vertical-text text-white">
+                        非遗定制
+                    </div>
+                    <div class="vertical-subtitle text-white">
+                        个性化体验传统工艺魅力
+                    </div>
+                </div>
+                <div class="ml-8 mt-4">
+                    <h2 class="text-2xl font-bold text-white">定制专属非遗体验</h2>
+                    <p class="mt-2 text-white text-opacity-90">根据自己的喜好，定制专属非遗体验计划</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 定制类别圆形图标展示 -->
+        <div class="grid grid-cols-4 gap-8 mb-12 px-8">
+            <div class="flex flex-col items-center">
+                <div class="category-circle">
+                    <img src="https://img.freepik.com/free-photo/woman-making-pottery-workshop_23-2149081379.jpg" alt="手工艺体验">
+                </div>
+                <div class="category-label">手工艺体验</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="category-circle">
+                    <img src="https://img.freepik.com/free-photo/master-making-porcelain-teapot-clay-workshop_23-2149081388.jpg" alt="技艺学习">
+                </div>
+                <div class="category-label">技艺学习</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="category-circle">
+                    <img src="https://img.freepik.com/free-photo/theater-mask-oriental-production_53876-147595.jpg" alt="民俗表演">
+                </div>
+                <div class="category-label">民俗表演</div>
+            </div>
+            <div class="flex flex-col items-center">
+                <div class="category-circle">
+                    <img src="https://img.freepik.com/free-photo/asian-art-zen-garden-concept_53876-35895.jpg" alt="文化之旅">
+                </div>
+                <div class="category-label">文化之旅</div>
+            </div>
+        </div>
+
+        <!-- 定制内容 -->
+        <section class="mb-8 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        非遗定制
+                    </div>
+                    <div class="vertical-subtitle">
+                        探索传统工艺的无限可能
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="ancient-border">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <!-- 左侧选项 -->
+                            <div class="md:col-span-1">
+                                <h3 class="font-bold text-xl text-green-900 mb-4">选择定制类型</h3>
+                                <div class="space-y-2">
+                                    <div class="custom-item p-3 selected">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                                <i class="fas fa-paint-brush text-green-800"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-green-900">手工艺体验</h4>
+                                                <p class="text-xs text-gray-600">亲手制作非遗手工艺品</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-item p-3">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                                <i class="fas fa-graduation-cap text-green-800"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-green-900">技艺学习</h4>
+                                                <p class="text-xs text-gray-600">系统学习非遗制作技艺</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-item p-3">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                                <i class="fas fa-theater-masks text-green-800"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-green-900">民俗表演</h4>
+                                                <p class="text-xs text-gray-600">欣赏或参与传统表演</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="custom-item p-3">
+                                        <div class="flex items-center">
+                                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center mr-3">
+                                                <i class="fas fa-route text-green-800"></i>
+                                            </div>
+                                            <div>
+                                                <h4 class="font-bold text-green-900">文化之旅</h4>
+                                                <p class="text-xs text-gray-600">深度体验非遗文化之旅</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 中间选项 -->
+                            <div class="md:col-span-2">
+                                <h3 class="font-bold text-xl text-green-900 mb-4">手工艺体验定制</h3>
+                                
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-green-900 mb-2">选择手工艺类型</h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft1" checked>
+                                            <label for="craft1" class="text-sm">满族剪纸</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft2">
+                                            <label for="craft2" class="text-sm">皮影制作</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft3">
+                                            <label for="craft3" class="text-sm">锦州玉雕</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft4">
+                                            <label for="craft4" class="text-sm">辽绣</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft5">
+                                            <label for="craft5" class="text-sm">面塑</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="craft6">
+                                            <label for="craft6" class="text-sm">葫芦雕刻</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-green-900 mb-2">选择体验形式</h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="format1" checked>
+                                            <label for="format1" class="text-sm">一对一指导</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="format2">
+                                            <label for="format2" class="text-sm">小组课程</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="format3">
+                                            <label for="format3" class="text-sm">传承人现场展示</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="format4">
+                                            <label for="format4" class="text-sm">线上指导</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-green-900 mb-2">预期时长</h4>
+                                    <div class="grid grid-cols-3 gap-3">
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="time1">
+                                            <label for="time1" class="text-sm">1-2小时</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="time2" checked>
+                                            <label for="time2" class="text-sm">半天</label>
+                                        </div>
+                                        <div class="checklist-item">
+                                            <input type="checkbox" id="time3">
+                                            <label for="time3" class="text-sm">全天</label>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-6">
+                                    <h4 class="font-bold text-green-900 mb-2">其他需求</h4>
+                                    <textarea class="w-full p-3 border border-gray-300 rounded-lg bg-white bg-opacity-70" rows="3" placeholder="请描述您的其他需求..."></textarea>
+                                </div>
+                                
+                                <div class="flex justify-end">
+                                    <button class="ancient-button px-6 py-2 rounded">提交定制需求</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 推荐方案 -->
+        <section class="mb-8 relative">
+            <div class="tea-section">
+                <div class="flex items-start">
+                    <div class="vertical-text">
+                        推荐方案
+                    </div>
+                    <div class="vertical-subtitle">
+                        精心设计的非遗体验套餐
+                    </div>
+                </div>
+                
+                <div class="section-content px-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="ancient-border">
+                            <img src="https://img.freepik.com/free-photo/woman-making-pottery-workshop_23-2149081374.jpg" alt="非遗技艺入门" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="font-bold text-xl text-green-900 mb-2">非遗技艺入门体验</h3>
+                            <div class="flex mb-3">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded mr-2">2小时</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">¥238/人</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">适合初次接触非遗的游客，在专业传承人指导下体验剪纸、皮影、面塑等多种非遗技艺，带走自己的手工作品。</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star-half-alt text-yellow-500 text-xs mr-1"></i>
+                                    <span class="text-xs text-gray-600">4.8 (125人评价)</span>
+                                </div>
+                                <button class="ancient-button px-4 py-1 rounded text-sm">立即预订</button>
+                            </div>
+                        </div>
+                        
+                        <div class="ancient-border">
+                            <img src="https://img.freepik.com/free-photo/mandarin-terracotta-warrior-army-in-china_23-2150217424.jpg" alt="非遗文化探秘之旅" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="font-bold text-xl text-green-900 mb-2">非遗文化探秘之旅</h3>
+                            <div class="flex mb-3">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded mr-2">全天</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">¥798/人</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">一日内参观辽宁省内多个非遗生产地，近距离观察非遗传承人工作场景，参与一次深度手工艺制作体验，含午餐。</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <span class="text-xs text-gray-600">5.0 (89人评价)</span>
+                                </div>
+                                <button class="ancient-button px-4 py-1 rounded text-sm">立即预订</button>
+                            </div>
+                        </div>
+                        
+                        <div class="ancient-border">
+                            <img src="https://img.freepik.com/free-photo/chinese-shadow-art-silhouette-showing-puppets_1417-12065.jpg" alt="传统皮影戏精品课程" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="font-bold text-xl text-green-900 mb-2">传统皮影戏精品课程</h3>
+                            <div class="flex mb-3">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded mr-2">6课时</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">¥1280/人</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">由国家级非遗传承人亲授，系统学习皮影制作与表演技艺，包含材料费，课程结束可获得结业证书。</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star-half-alt text-yellow-500 text-xs mr-1"></i>
+                                    <span class="text-xs text-gray-600">4.7 (63人评价)</span>
+                                </div>
+                                <button class="ancient-button px-4 py-1 rounded text-sm">立即预订</button>
+                            </div>
+                        </div>
+                        
+                        <div class="ancient-border">
+                            <img src="https://img.freepik.com/free-photo/chinese-paper-cutting-art_53876-90066.jpg" alt="满族剪纸私人订制" class="w-full h-48 object-cover rounded-lg mb-4">
+                            <h3 class="font-bold text-xl text-green-900 mb-2">满族剪纸私人订制</h3>
+                            <div class="flex mb-3">
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded mr-2">定制时长</span>
+                                <span class="px-2 py-1 bg-green-100 text-green-800 text-xs rounded">¥598起/次</span>
+                            </div>
+                            <p class="text-sm text-gray-600 mb-3">根据您的需求定制满族剪纸作品或课程，可用于礼品、纪念品或企业文创产品，支持个性化定制内容和风格。</p>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <i class="fas fa-star text-yellow-500 text-xs mr-1"></i>
+                                    <span class="text-xs text-gray-600">5.0 (42人评价)</span>
+                                </div>
+                                <button class="ancient-button px-4 py-1 rounded text-sm">立即预订</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="fixed bottom-0 left-0 right-0 bg-white border-t border-green-700 px-4 py-2">
+        <div class="flex justify-around">
+            <a href="home.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-home text-lg"></i>
+                <span class="text-xs mt-1">主页</span>
+            </a>
+            <a href="research.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-book-open text-lg"></i>
+                <span class="text-xs mt-1">研学</span>
+            </a>
+            <a href="activities.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-calendar-alt text-lg"></i>
+                <span class="text-xs mt-1">活动</span>
+            </a>
+            <a href="custom.html" class="flex flex-col items-center text-green-800 bottom-nav-button active">
+                <i class="fas fa-paint-brush text-lg"></i>
+                <span class="text-xs mt-1">定制</span>
+            </a>
+            <a href="profile.html" class="flex flex-col items-center text-gray-500 bottom-nav-button">
+                <i class="fas fa-user text-lg"></i>
+                <span class="text-xs mt-1">我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 选择定制类型的交互
+            const customItems = document.querySelectorAll('.custom-item');
+            
+            customItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    // 移除所有已选择状态
+                    customItems.forEach(i => i.classList.remove('selected'));
+                    // 添加选择状态到当前元素
+                    this.classList.add('selected');
+                });
+            });
+        });
+    </script>
+</body>
+</html> 
