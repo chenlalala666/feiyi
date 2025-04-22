@@ -1,0 +1,280 @@
+/* 
+* 辽宁非遗数字展示平台 - 活动页面样式文件
+* 仅用于活动(activities)页面的特定样式
+*/
+
+/* Banner样式 */
+.banner-bg {
+    background-image: url('https://img.freepik.com/free-photo/chinese-style-landscape-painting-mountains-trees_1417-973.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 350px;
+    position: relative;
+    border: 2px solid var(--primary-color);
+    box-shadow: var(--shadow-md);
+}
+
+.banner-bg::before {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    right: 8px;
+    bottom: 8px;
+    border: 1px dashed var(--border-color-light);
+    pointer-events: none;
+    z-index: 2;
+}
+
+.banner-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
+    z-index: 1;
+}
+
+.banner-stamp {
+    position: absolute;
+    right: 40px;
+    bottom: 30px;
+    width: 100px;
+    height: 100px;
+    background-image: url('https://img.freepik.com/free-vector/chinese-seal-stamp-mark-east-asia-traditional-chinese-japanese-korean-style_160308-293.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transform: rotate(15deg);
+    z-index: 3;
+}
+
+.banner-content {
+    position: relative;
+    z-index: 5;
+    padding: 2.5rem;
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.banner-title {
+    font-size: 2.2rem;
+    color: var(--text-color-light);
+    text-shadow: var(--shadow-text);
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+}
+
+.banner-description {
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+    max-width: 400px;
+    letter-spacing: 0.05em;
+}
+
+.banner-text-container {
+    margin-left: 2rem;
+    border-left: 1px solid rgba(244, 245, 233, 0.5);
+    padding-left: 2rem;
+}
+
+.banner-text-decoration {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    background-color: rgba(244, 245, 233, 0.2);
+    border: 1px solid rgba(244, 245, 233, 0.5);
+    margin-right: 0.5rem;
+    vertical-align: middle;
+    transform: rotate(45deg);
+}
+
+.inky-line {
+    height: 2px;
+    background-color: rgba(244, 245, 233, 0.5);
+    margin: 1rem 0;
+    position: relative;
+    width: 80%;
+}
+
+.inky-line::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: -4px;
+    width: 10px;
+    height: 10px;
+    background-color: var(--text-color-light);
+    border-radius: 50%;
+}
+
+/* 活动卡片样式 */
+.ancient-card {
+    border: 2px solid var(--primary-color);
+    background-color: var(--bg-transparent);
+    padding: 1rem;
+    border-radius: 0;
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.ancient-card::before {
+    content: '';
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid var(--border-color-light);
+    pointer-events: none;
+}
+
+.ancient-card-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+/* 垂直文本样式 */
+.vertical-text {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    display: inline-block;
+    font-size: 2.5rem;
+    line-height: 1.5;
+    color: var(--text-color-light);
+    font-weight: bold;
+    letter-spacing: 0.2em;
+    margin-right: 1.5rem;
+    text-shadow: var(--shadow-text);
+}
+
+.vertical-subtitle {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    font-size: 1.1rem;
+    color: var(--text-color-light);
+    margin-right: 1rem;
+    letter-spacing: 0.2em;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 高亮框 */
+.highlight-box {
+    background-color: rgba(139, 90, 43, 0.1);
+    border-left: 3px solid var(--primary-color);
+    padding: 0.5rem 1rem;
+    margin: 1rem 0;
+}
+
+/* 标签按钮样式 */
+.tab-button {
+    border-bottom: 2px solid transparent;
+    transition: var(--transition-normal);
+    color: var(--text-color-link);
+}
+
+.tab-button.active {
+    border-bottom: 2px solid var(--primary-color);
+    color: var(--text-color-active);
+    font-weight: bold;
+}
+
+/* 城市推荐区域 */
+.category-circle {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto;
+    border: 1px solid var(--primary-color);
+    transition: var(--transition-normal);
+}
+
+.category-circle:hover {
+    transform: scale(1.05);
+    box-shadow: var(--shadow-sm);
+}
+
+.category-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.category-label {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* 活动内容布局 */
+.tea-section {
+    display: flex;
+    align-items: flex-start;
+    margin: 3rem 0;
+    position: relative;
+}
+
+.section-content {
+    flex: 1;
+}
+
+/* 行程安排样式 */
+.schedule-section {
+    background-color: rgba(193, 154, 107, 0.7);
+    border: 1px solid var(--primary-color);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.schedule-item {
+    border-left: 2px solid var(--primary-color);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.schedule-item::before {
+    content: '';
+    position: absolute;
+    left: -6px;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .banner-content {
+        flex-direction: column;
+    }
+    
+    .vertical-text, .vertical-subtitle {
+        writing-mode: horizontal-tb;
+        margin-right: 0;
+        margin-bottom: 1rem;
+    }
+    
+    .banner-text-container {
+        margin-left: 0;
+        border-left: none;
+        padding-left: 0;
+        margin-top: 1rem;
+    }
+    
+    .tea-section {
+        flex-direction: column;
+    }
+} 
