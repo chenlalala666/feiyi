@@ -1,0 +1,183 @@
+/* 
+* 辽宁非遗数字展示平台 - 通用样式文件
+* 所有页面共享的基础样式设置
+*/
+
+/* 基础样式 */
+body {
+    background-color: #c0a17b;
+    font-family: "STKaiti", "KaiTi", "FangSong", serif;
+    color: #3b3a36;
+    background-image: url('https://img.freepik.com/free-photo/brown-wooden-textured-background_53876-14865.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* 顶部导航样式 */
+.top-nav {
+    background-color: rgba(193, 154, 107, 0.95);
+    border-bottom: 1px solid #8b5a2b;
+}
+
+/* 导航菜单样式 */
+.nav-tabs {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #8b5a2b;
+    margin-bottom: 2rem;
+}
+
+.nav-tabs a {
+    padding: 0.5rem 1.5rem;
+    color: #704624;
+    margin: 0 0.5rem;
+    position: relative;
+}
+
+.nav-tabs a.active {
+    color: #8b5a2b;
+    font-weight: bold;
+}
+
+.nav-tabs a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: #8b5a2b;
+}
+
+/* 底部导航栏样式 */
+.bottom-nav-button {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.bottom-nav-button::after {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #8b5a2b;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.bottom-nav-button:hover::after, 
+.bottom-nav-button.active::after {
+    width: 70%;
+}
+
+/* 通用边框样式 */
+.ancient-border {
+    border-radius: 8px;
+    background-color: rgba(244, 245, 233, 0.8);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border: 1px solid #8b5a2b;
+}
+
+/* 按钮样式 */
+.ancient-button {
+    background-color: #8b5a2b;
+    color: #f4f5e9;
+    transition: all 0.3s;
+    border: none;
+}
+
+.ancient-button:hover {
+    background-color: #704624;
+    transform: translateY(-2px);
+}
+
+/* 页面标题样式 */
+.page-title {
+    text-align: center;
+    margin: 1rem 0 2rem;
+    position: relative;
+    color: #8b5a2b;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.page-title::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 2px;
+    background-color: #8b5a2b;
+}
+
+/* 表单元素样式 */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #8b5a2b;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+.form-header {
+    border-bottom: 1px solid #8b5a2b;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+}
+
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #f4f5e9;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #8b5a2b;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* 响应式调整 */
+@media (max-width: 768px) {
+    .nav-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+        justify-content: flex-start;
+        padding-bottom: 0.5rem;
+    }
+    
+    .nav-tabs a {
+        padding: 0.5rem 1rem;
+        margin: 0 0.25rem;
+    }
+} 

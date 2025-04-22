@@ -1,0 +1,41 @@
+/* 
+* 辽宁非遗数字展示平台 - CSS变量
+* 包含网站的全局颜色和字体变量
+*/
+
+:root {
+    /* 主色调 */
+    --primary-color: #8b5a2b;
+    --primary-color-light: #c0a17b;
+    --primary-color-dark: #704624;
+    
+    /* 背景色 */
+    --bg-color: #c0a17b;
+    --bg-paper: #f4f5e9;
+    --bg-transparent: rgba(244, 245, 233, 0.8);
+    
+    /* 文字颜色 */
+    --text-color: #3b3a36;
+    --text-color-light: #f4f5e9;
+    --text-color-link: #704624;
+    --text-color-active: #8b5a2b;
+    
+    /* 边框颜色 */
+    --border-color: #8b5a2b;
+    --border-color-light: rgba(139, 90, 43, 0.3);
+    
+    /* 阴影 */
+    --shadow-sm: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 8px 16px rgba(0, 0, 0, 0.2);
+    --shadow-text: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    
+    /* 字体 */
+    --font-family: "STKaiti", "KaiTi", "FangSong", serif;
+    
+    /* 过渡效果 */
+    --transition-normal: all 0.3s;
+    
+    /* 卡片样式变量 */
+    --card-padding: 1.5rem;
+    --card-border-radius: 8px;
+} 
